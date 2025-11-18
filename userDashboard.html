@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- User Dashboard -->
+    <div id="userDashboard" class="dashboard">
+      <div class="header">
+        <div class="header-left">
+          <div class="header-logo">💳</div>
+          <div class="header-info">
+            <h2 id="userName">Kas Ku</h2>
+            <p>Selamat datang, user</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <button class="btn-user">User</button>
+          <button class="btn-logout" onclick="logout()">Logout</button>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="stats-container">
+          <div class="stat-card income">
+            <div class="stat-header">
+              <span class="stat-title">Total Pemasukan</span>
+              <span class="stat-icon">📈</span>
+            </div>
+            <div class="stat-value green" id="userTotalIncome">Rp 0</div>
+          </div>
+
+          <div class="stat-card expense">
+            <div class="stat-header">
+              <span class="stat-title">Total Pengeluaran</span>
+              <span class="stat-icon">📉</span>
+            </div>
+            <div class="stat-value red" id="userTotalExpense">Rp 0</div>
+          </div>
+
+          <div class="stat-card balance">
+            <div class="stat-header">
+              <span class="stat-title">Saldo</span>
+              <span class="stat-icon">💰</span>
+            </div>
+            <div class="stat-value blue" id="userBalance">Rp 0</div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab active" onclick="switchUserTab('transaksi')">
+            Transaksi
+          </button>
+          <button class="tab" onclick="switchUserTab('pemasukan')">
+            Pemasukan
+          </button>
+          <button class="tab" onclick="switchUserTab('pengeluaran')">
+            Pengeluaran
+          </button>
+          <button class="tab" onclick="switchUserTab('laporan')">
+            Laporan
+          </button>
+        </div>
+
+        <div id="userTransaksi" class="content-section active">
+          <div class="transaction-card">
+            <div class="section-header">
+              <h3 class="section-title">Semua Transaksi</h3>
+              <p class="section-subtitle">Riwayat pemasukan dan pengeluaran</p>
+            </div>
+            <table id="userAllTransactionsTable">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Jenis</th>
+                  <th>Deskripsi</th>
+                  <th>Kategori</th>
+                  <th>Jumlah</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="userPemasukan" class="content-section">
+          <div class="transaction-card">
+            <div class="section-header">
+              <h3 class="section-title">Pemasukan</h3>
+              <p class="section-subtitle">Daftar semua pemasukan</p>
+            </div>
+            <table id="userIncomeTable">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Jenis</th>
+                  <th>Deskripsi</th>
+                  <th>Kategori</th>
+                  <th>Jumlah</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="userPengeluaran" class="content-section">
+          <div class="transaction-card">
+            <div class="section-header">
+              <h3 class="section-title">Pengeluaran</h3>
+              <p class="section-subtitle">Daftar semua pengeluaran</p>
+            </div>
+            <table id="userExpenseTable">
+              <thead>
+                <tr>
+                  <th>Tanggal</th>
+                  <th>Jenis</th>
+                  <th>Deskripsi</th>
+                  <th>Kategori</th>
+                  <th>Jumlah</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="userLaporan" class="content-section">
+          <div class="stats-container">
+            <div class="stat-card income">
+              <div class="stat-header">
+                <span class="stat-title">📈 Total Pemasukan</span>
+              </div>
+              <div class="stat-value green" id="reportIncome">Rp 6.000.000</div>
+            </div>
+
+            <div class="stat-card expense">
+              <div class="stat-header">
+                <span class="stat-title">📉 Total Pengeluaran</span>
+              </div>
+              <div class="stat-value red" id="reportExpense">Rp 700.000</div>
+            </div>
+
+            <div class="stat-card balance">
+              <div class="stat-header">
+                <span class="stat-title">💰 Net Balance</span>
+              </div>
+              <div class="stat-value blue" id="reportBalance">Rp 5.300.000</div>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <div class="section-header">
+              <h3 class="section-title">Perbandingan Bulanan</h3>
+              <p class="section-subtitle">Pemasukan vs Pengeluaran per bulan</p>
+            </div>
+            <div class="chart">
+              <div class="bar">
+                <div
+                  class="bar-income"
+                  style="height: 250px; width: 100%"
+                ></div>
+                <span>Okt 2025</span>
+              </div>
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                gap: 20px;
+                margin-top: 20px;
+              "
+            >
+              <span>■ <span style="color: #10b981">Pemasukan</span></span>
+              <span>■ <span style="color: #ef4444">Pengeluaran</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
